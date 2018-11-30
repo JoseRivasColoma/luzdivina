@@ -1,0 +1,18 @@
+nav{
+    background-color: blue;
+}
+body{
+    background-color: aqua;
+}
+.carousel-item{
+    margin-left: 10%;
+    
+}
+.carousel-item, img{
+    width: 80%;
+    height:500px;
+}
+h5,p{
+    color: bisque;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+}
