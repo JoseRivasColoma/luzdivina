@@ -1,0 +1,47 @@
+{% extends 'core/base.html' %}
+{% load static%}
+<!--Bloque de titulo-->
+{% block titulo %}
+Listado de Fieles
+{% endblock titulo %}
+<!--Bloque de descripcion de la página-->
+{% block descripcion %}
+Listado de Fieles
+{% endblock descripcion %}
+<!--Bloque de contenido de la pagina-->
+{% block contenido %}
+
+<table class="table table-hover" style="width: 80%;">
+    <thead>
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Edad</th>
+            <th scope="col">Telefono</th>
+            <th scope="col">Dirección</th>
+            <th scope="col">Cargo</th>
+            <th scope="col">Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for p in personas %}
+        <tr>
+            <td>{{ p.nombre|add:' '|add:p.apellido }}</td>
+            <td>{{ p.edad }}</td>
+            <td>{{ p.telefono }}</td>
+            <td>{{ p.direccion }}</td>
+            <td>{{ p.tipo_persona.descripcion }}</td>
+            <td>
+                <a href="{% url 'eliminar_persona' p.id %}">Eliminar</a>
+                <a href="{% url 'modificar_persona' p.id %}">Buscar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% if messages %}
+    {% for m in messages %}
+    <div>{{m}}</div>
+    {% endfor %}
+{% endif%}
+{% endblock contenido %}

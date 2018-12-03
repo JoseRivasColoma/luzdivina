@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Esta sentencia permite traer los archivos estáticos (CSS, JS, Imágenes, etc.)-->
     {% load static %}
     <!-- Link CSS BS-->
@@ -13,10 +15,66 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <title>Parroquia Luz Divina</title>
+    
+
+    <title>
+        {% block titulo %}
+
+        {% endblock titulo %}
+    </title>
 </head>
+
 <body>
+
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+        <a class="navbar-brand" href="{% url 'home' %}">{% block descripcion %}
+
+                                         {% endblock descripcion %}</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Crud de Fieles
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="{% url 'ingreso_personas' %}">Ingreso de Fieles</a>
+                        <a class="dropdown-item" href="{% url 'listado_personas' %}">Listado de Fieles</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            Nuestros Fieles
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            {% for tp in tp %}
+                            <a class="dropdown-item" href="#">Ingreso de {{tp.descripcion}}</a>
+                            {% endfor%}
+                        </div>
+                    </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Administración de Comunidades
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Listado de Fieles</a>
+                        <a class="dropdown-item" href="#">Actividades Mensuales</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
     {% block contenido %}
+
     {% endblock contenido %}
 </body>
+
 </html>

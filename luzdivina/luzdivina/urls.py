@@ -21,3 +21,8 @@ urlpatterns = [
     path('', include('core.urls')),
     path('api/', include('api.urls'))
 ]
+
+#personalizacion de los titulos de administrador
+admin.site.site_header = "Administración de Parroquia"
+admin.site.title = "Sitio de Administración de Parroquia Luz Sagrada"
+admin.site.index_title = "Luz Sagrada"
